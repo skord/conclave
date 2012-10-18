@@ -19,6 +19,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'unread'
+gem 'rabl'
 
 group :development, :test do
   gem 'sqlite3'
@@ -31,6 +32,11 @@ group :development, :test do
   gem 'email_spec'
   gem 'timecop'
   gem 'quiet_assets'
+  gem 'json_spec'
+  # remove these before merge
+  gem 'autotest'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
 end
 
 group :production do

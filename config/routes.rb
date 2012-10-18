@@ -1,3 +1,5 @@
+require 'api_constraints'
+
 Conclave::Application.routes.draw do
   devise_for :users, controllers: {
     sessions:           "sessions",
@@ -25,6 +27,15 @@ Conclave::Application.routes.draw do
         post 'redact'
         post 'unredact'
       end
+    end
+  end
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version:1, default: :true) do
+      resources :forums, only: [:index, :show] do
+        resources :conversations, only: [:index]
+      end
+      resources :conversations, only: [:show]
     end
   end
 
